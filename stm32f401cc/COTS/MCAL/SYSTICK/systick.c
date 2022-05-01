@@ -5,9 +5,10 @@
  *      Author: dahroug
  */
 
+
 #include <SERVICES/Std_types.h>
-#include <SERVICES/Bit_utils.h>
-#include <MCAL/SYSTICK/systick.h>
+
+#include <MCAL/SYSTICK/Systick.h>
 
 typedef struct
 {
@@ -20,7 +21,9 @@ typedef struct
 
 /* private functions or handlers prototypes */
 void 		SysTick_Handler (void);
+#if STK_SYSTICK_MODE == STK_SINGLE_SHOT_MODE
 static void SYSTICK_vidStop (void);
+#endif
 
 #define 	SYSTICK_BASE_ADD		((volatile Systick_reg_t*)0xE000E010)
 
@@ -55,7 +58,15 @@ static u32 SYSTICK_counter	 	  	  				   = STK_CLR_VAL;
 #endif
 
 static SystickTimerState_t SYSTICK_timerOperationState = TIMER_NOT_INITIALIZED;
-static pfunc_t SYSTICK_TimerLoadRegisterOvf 		   = NULL;
+static pfunc SYSTICK_TimerLoadRegisterOvf 		   = NULL;
+
+#if STK_SYSTICK_MODE == STK_SINGLE_SHOT_MODE
+void SYSTICK_vidStop (void)
+{
+	SYSTICK_BASE_ADD->STK_CTRL &= ~(STK_CTRL_ENABLE_EN);
+}
+#endif
+
 
 void  		   SYSTICK_vidInit (void)
 {
@@ -65,10 +76,10 @@ void  		   SYSTICK_vidInit (void)
 	SYSTICK_timerOperationState = TIMER_LOAD_NOT_SET;
 }
 
-STD_Error_t	   SYSTICK_u32SetTickTimeMs (u32 timeMs)
+Std_enuErrorStatus   SYSTICK_tenuSetTickTimeMs (u32 timeMs)
 {
 
-	STD_Error_t StdRetVal   = OK;
+	Std_enuErrorStatus StdRetVal   = OK;
 	u32 		tempLoadVal = STK_CLR_VAL;
 	u32 		loadValue   = STK_CLR_VAL;
 
@@ -156,7 +167,7 @@ STD_Error_t	   SYSTICK_u32SetTickTimeMs (u32 timeMs)
 		   	}
 		   else if (loadValue > STK_LOAD_TOPVAL)
 		    {
-			   StdRetVal = INVALID_ARGUMENT;
+			   StdRetVal = INVALID_ARG;
 		    }
 		   	else
 		   	{
@@ -181,9 +192,9 @@ STD_Error_t	   SYSTICK_u32SetTickTimeMs (u32 timeMs)
 	return StdRetVal;
 }
 
-STD_Error_t	SYSTICK_vidStart(void)
+Std_enuErrorStatus	SYSTICK_tenuStart(void)
 {
-	STD_Error_t StdRetVal = OK;
+	Std_enuErrorStatus StdRetVal = OK;
 
 	if (SYSTICK_timerOperationState != TIMER_READY)
 	{
@@ -198,9 +209,9 @@ STD_Error_t	SYSTICK_vidStart(void)
 	return StdRetVal;
 }
 
-STD_Error_t	   SYSTICK_tenuRegisterCbf (pfunc_t Cbf)
+Std_enuErrorStatus	   SYSTICK_tenuRegisterCbf (pfunc Cbf)
 {
-	STD_Error_t StdRetVal = OK;
+	Std_enuErrorStatus StdRetVal = OK;
 
 	if (Cbf == NULL)
 	{
@@ -214,10 +225,7 @@ STD_Error_t	   SYSTICK_tenuRegisterCbf (pfunc_t Cbf)
 	return StdRetVal;
 }
 
-void SYSTICK_vidStop (void)
-{
-	SYSTICK_BASE_ADD->STK_CTRL &= ~(STK_CTRL_ENABLE_EN);
-}
+
 
 void __attribute__ ((section(".after_vectors"),weak))
 SysTick_Handler (void)

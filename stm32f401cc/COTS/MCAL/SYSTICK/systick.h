@@ -51,9 +51,9 @@ typedef enum
 #define 	STK_INTERRUPT_STATE				STK_CTRL_TICKINT_EN
 #define 	STK_SYSTICK_MODE				STK_MULTI_SHOT_MODE
 
-extern void	   		   SYSTICK_vidInit (void);
-extern STD_Error_t	   SYSTICK_u32SetTickTimeMs (u32 timeMs);
-extern STD_Error_t	   SYSTICK_vidStart(void);
-extern STD_Error_t	   SYSTICK_tenuRegisterCbf (pfunc_t Cbf);
+extern void	   		      SYSTICK_vidInit (void);
+extern Std_enuErrorStatus SYSTICK_tenuSetTickTimeMs (u32 timeMs);
+extern Std_enuErrorStatus SYSTICK_tenuStart(void);
+extern Std_enuErrorStatus SYSTICK_tenuRegisterCbf (pfunc Cbf);
 
 #endif /* MCAL_SYSTICK_SYSTICK_H_ */
