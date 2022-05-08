@@ -684,7 +684,7 @@ RccEnuSysClkStat_t	  Rcc_tenuConfigPll	(u8 Copy_u8PllM, u16 Copy_u16PllN, u8 Cop
 	{
 		Loc_tenuErrorStatusReturnValue = RCC_enuErrorPLLQ;
 	}
-	else if ( (Copy_u32PllSrc >> RCC_PLLCFGR_PLLSRC) >= RCC_PLLCFGR_PLLSRC_OPTIONS )
+	else if ( ( (Copy_u32PllSrc >> RCC_PLLCFGR_PLLSRC) >= RCC_PLLCFGR_PLLSRC_OPTIONS ) || (RCC_PLLCFGR & Copy_u32PllSrc) != Copy_u32PllSrc )
 	{
 		Loc_tenuErrorStatusReturnValue = RCC_enuErrorPLLSRC;
 	}
@@ -780,6 +780,14 @@ RccEnuSysClkStat_t	 		Rcc_tenuSetRtcPrescaler      (u8 Copy_u8RTCPrescaler)
 	}
 
 	return Loc_tenuErrStatusRetVal;
+}
+
+/*_____________________________________________________________Handlers__________________________________________________________________*/
+
+void __attribute__ ((section(".after_vectors"),weak))
+NMI_Handler (void)
+{
+	RCC_CIR |= RCC_CIR_CSSC;
 }
 
 /*______________________________________________________________EOF_________________________________________________________________*/

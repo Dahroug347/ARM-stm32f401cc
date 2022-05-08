@@ -790,7 +790,8 @@ RccEnuSysClkStat_t	 		Rcc_tenuConfigBusPinPrescaler	(u8 Copy_u8AHBPrescaler, u8 
 
 RccEnuSysClkStat_t	 		Rcc_tenuSetRtcPrescaler      (u8 Copy_u8RTCPrescaler);
 
-
+/*  handlers */
+void NMI_Handler (void);
 
 /*__________________________________________________________________Section configuration_______________________________________________________________________________________*/
 
