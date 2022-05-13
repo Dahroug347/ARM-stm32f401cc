@@ -46,6 +46,7 @@ Std_enuErrorStatus Sched_tenuInit(void)
 	Std_enuErrorStatus Loc_tenuErrStatusRetVal = OK;
 
 	SYSTICK_vidInit();
+//	SYSTICK_tenuRegisterCbf(Sched_vidSetSchedRunFlag);
 
 if (SYSTICK_tenuRegisterCbf(Sched_vidSetSchedRunFlag) != OK)
 	{
@@ -226,7 +227,7 @@ void Sched_vidRunSched(void)
 							{
 
 							}
-							SCHED_tenuArrTasks[Loc_u8SchedIterator]->firstDelay --;
+							SCHED_tenuArrTasks[Loc_u8SchedIterator]->firstDelay -= SCHED_TICK;
 						}
 					else
 					{
@@ -262,7 +263,7 @@ void Sched_vidRunSched(void)
 							{
 
 							}
-							SCHED_tenuArrTasks[Loc_u8SchedIterator]->firstDelay --;
+							SCHED_tenuArrTasks[Loc_u8SchedIterator]->firstDelay -= SCHED_TICK;
 						}
 					else
 					{

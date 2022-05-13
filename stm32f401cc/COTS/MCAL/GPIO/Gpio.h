@@ -17,6 +17,12 @@ typedef struct
 	u16 Speed;								// (frequency of pin )
 }GPIO_ChannelPinCfg_t;
 
+
+/*Pin status*/
+#define 	GPIO_HIGH							((u8)1)
+#define 	GPIO_LOW							((u8)0)
+
+
 #define 	GPIO_PORTA 		                     ((void*)0x40020000)
 #define 	GPIO_PORTB 		                     ((void*)0x40020400)
 #define 	GPIO_PORTC 		                     ((void*)0x40020800)

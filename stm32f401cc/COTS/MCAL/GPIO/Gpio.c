@@ -43,8 +43,6 @@ typedef struct
 #define 	GPIO_MODE_CFG_VAR_PUPD_SHFT_MSK		4
 #define 	GPIO_MODE_CFG_VAR_OTY_SHFT_MSK		8
 
-#define 	GPIO_HIGH							((u8)1)
-#define 	GPIO_LOW							((u8)0)
 
 GPIO_ErrorStatus_t Gpio_Init (GPIO_ChannelPinCfg_t* Add_pstrPinCfg)
 {

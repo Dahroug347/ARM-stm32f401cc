@@ -63,7 +63,7 @@
 #define 	RCC_CLR_VAL			                        0
 #define 	RCC_SYS_CLKS_NUM 	                        ((u8)3)
 #define 	RCC_CLKS			                        ((u8)6)
-#define 	RCC_SYSCLK_WAIT		                        ((u8)50)
+#define 	RCC_SYSCLK_WAIT		                        ((u8)255)
 #define 	RCC_STATES			                        ((u8)2)
 #define     RCC_SW_RST_MSK		                        ((u32)0xFFFFFFFC)
 #define 	RCC_SW_GET_CLK_MSK                          ((u32)0x00000003)
@@ -113,6 +113,7 @@
 #define 	RCC_CFGR_SHFT_MSK_MCO1PRE		            ((u8)24)
 #define 	RCC_CFGR_SHFT_MSK_MCO2PRE		            ((u8)27)
 
+u8 ayman;
 /*___________________________________________________________________________________________________________________________*/
 
 
@@ -788,6 +789,8 @@ void __attribute__ ((section(".after_vectors"),weak))
 NMI_Handler (void)
 {
 	RCC_CIR |= RCC_CIR_CSSC;
+	ayman = 7;
+
 }
 
 /*______________________________________________________________EOF_________________________________________________________________*/

@@ -6,9 +6,9 @@
  */
 
 
-#include <SERVICES/Std_types.h>
+#include "Std_types.h"
 
-#include <MCAL/SYSTICK/Systick.h>
+#include "Systick.h"
 
 typedef struct
 {
@@ -158,7 +158,7 @@ Std_enuErrorStatus   SYSTICK_tenuSetTickTimeMs (u32 timeMs)
 
 	}
 #else
-	static u32 oneMsecTicksCount = STK_FCPU/PRESCALER*SEC_IN_MILLI;
+	static u32 oneMsecTicksCount = STK_FCPU/(PRESCALER*SEC_IN_MILLI);
 		   loadValue = timeMs*oneMsecTicksCount;
 
 		   if (SYSTICK_timerOperationState == TIMER_NOT_INITIALIZED)
