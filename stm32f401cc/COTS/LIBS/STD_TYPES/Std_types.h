@@ -62,4 +62,8 @@ typedef enum
 
 #define 	NULL 				((void*)0)
 
+#define     REG_8_COUNT				            256
+#define     REG_16_COUNT			            65536
+#define     REG_32_COUNT                        4294967296
+
 #endif

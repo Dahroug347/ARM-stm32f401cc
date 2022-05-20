@@ -774,21 +774,21 @@ typedef enum
 
 }RccEnuSysClkStat_t;
 
-RccEnuSysClkStat_t	 		Rcc_tenuSelectSysClk 		    (u8 Copy_u8SysClkType);
+extern RccEnuSysClkStat_t	 		Rcc_tenuSelectSysClk 		    (u8 Copy_u8SysClkType);
+ 
+extern RccEnuSysClkStat_t	  		Rcc_tenuClkControl  			(u8 Copy_u8Clk, u8 Copy_u8State);
+ 
+extern RccEnuSysClkStat_t			Rcc_tenuGetClkStatus 	        (u8 Copy_u8Clk);
+ 
+extern RccEnuSysClkStat_t	  		Rcc_tenuControlPeripheral 	    (u8 Copy_u8PeriBusReg ,u32 Copy_u32Peripheral, u8 Copy_u8State);
+ 
+extern RccEnuSysClkStat_t	  		Rcc_tenuConfigPll	    	    (u8 Copy_u8PllM, u16 Copy_u16PllN, u8 Copy_u8PllP, u8 Copy_u8PllQ, u32 Copy_u32PllSrc);
+ 
+extern RccEnuSysClkStat_t	 		Rcc_tenuConfigBusPinPrescaler	(u8 Copy_u8AHBPrescaler, u8 Copy_u8APB1Prescaler, u8 Copy_u8APB2Prescaler,
+ 		                                                             u8 Copy_u8MCO1Prescaler,
+		                                                             u8 Copy_u8MCO2Prescaler);
 
-RccEnuSysClkStat_t	  		Rcc_tenuClkControl  			(u8 Copy_u8Clk, u8 Copy_u8State);
-
-RccEnuSysClkStat_t			Rcc_tenuGetClkStatus 	        (u8 Copy_u8Clk);
-
-RccEnuSysClkStat_t	  		Rcc_tenuControlPeripheral 	    (u8 Copy_u8PeriBusReg ,u32 Copy_u32Peripheral, u8 Copy_u8State);
-
-RccEnuSysClkStat_t	  		Rcc_tenuConfigPll	    	    (u8 Copy_u8PllM, u16 Copy_u16PllN, u8 Copy_u8PllP, u8 Copy_u8PllQ, u32 Copy_u32PllSrc);
-
-RccEnuSysClkStat_t	 		Rcc_tenuConfigBusPinPrescaler	(u8 Copy_u8AHBPrescaler, u8 Copy_u8APB1Prescaler, u8 Copy_u8APB2Prescaler,
-		                                                     u8 Copy_u8MCO1Prescaler,
-		                                                     u8 Copy_u8MCO2Prescaler);
-
-RccEnuSysClkStat_t	 		Rcc_tenuSetRtcPrescaler      (u8 Copy_u8RTCPrescaler);
+extern RccEnuSysClkStat_t	 		Rcc_tenuSetRtcPrescaler      (u8 Copy_u8RTCPrescaler);
 
 /*  handlers */
 void NMI_Handler (void);

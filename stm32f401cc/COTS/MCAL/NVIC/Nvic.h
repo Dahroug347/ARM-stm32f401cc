@@ -297,25 +297,25 @@ typedef enum
 #define 	NVIC_IPR_SUP15		0x0F
 
 /*		Enable IRQn		*/
-Std_enuErrorStatus NVIC_enuEnableIRQ(IRQn_t enu_tIRQn);
+extern Std_enuErrorStatus NVIC_enuEnableIRQ(IRQn_t enu_tIRQn);
 
 /*		Disable IRQn		*/
-Std_enuErrorStatus NVIC_enuDisableIRQ(IRQn_t enu_tIRQn);
+extern Std_enuErrorStatus NVIC_enuDisableIRQ(IRQn_t enu_tIRQn);
 
 /*		Set IRQn pending		*/
-Std_enuErrorStatus NVIC_enuSetPendingIRQ (IRQn_t enu_tIRQn);
+extern Std_enuErrorStatus NVIC_enuSetPendingIRQ (IRQn_t enu_tIRQn);
 
 /*		Clear IRQn pending status		*/
-Std_enuErrorStatus NVIC_enuClearPendingIRQ (IRQn_t enu_tIRQn) ;
+extern Std_enuErrorStatus NVIC_enuClearPendingIRQ (IRQn_t enu_tIRQn) ;
 
 /*		Return the IRQ number of the active interrupt		*/
-Std_enuErrorStatus NVIC_enuGetActive(IRQn_t enu_tIRQn,pu8 Add_pu8PendingStatus);
+extern Std_enuErrorStatus NVIC_enuGetActive(IRQn_t enu_tIRQn,pu8 Add_pu8PendingStatus);
 
 /*		 Set priority for IRQn		*/
-Std_enuErrorStatus NVIC_enuSetPriority (IRQn_t enu_tIRQn, PriorityCfg_t Copy_tenuIPRCfg, u8 Copy_u8GroupPriority, u8 Copy_u8SubPriority);
+extern Std_enuErrorStatus NVIC_enuSetPriority (IRQn_t enu_tIRQn, PriorityCfg_t Copy_tenuIPRCfg, u8 Copy_u8GroupPriority, u8 Copy_u8SubPriority);
 
 /*		 Set NVIC priority configuration of group & sub-group */
-Std_enuErrorStatus NVIC_enuConfigPriority (PriorityCfg_t Copy_tenuIPRCfg);
+extern Std_enuErrorStatus NVIC_enuConfigPriority (PriorityCfg_t Copy_tenuIPRCfg);
 
 
 /*
