@@ -350,6 +350,7 @@ typedef struct
 
 
 /* ----------------------------Function Prototypes section ---------------------------------------------- */
+
 extern GPIO_ErrorStatus_t Gpio_Init (GPIO_ChannelPinCfg_t* Add_pstrPinCfg);
 
 extern GPIO_ErrorStatus_t Gpio_setPinValue (void * GPIO_pvPort, u16 Copy_u16Pin , u8 Copy_u8Value);
@@ -358,7 +359,10 @@ extern GPIO_ErrorStatus_t Gpio_ReadPinValue(GPIO_ChannelPinCfg_t * Add_strGpioCf
 
 extern GPIO_ErrorStatus_t Gpio_SetPinAlternateFunc(void * GPIO_pvPort, u16 Copy_u16Pin, u32 Copy_u32AlternateFunction);
 
+extern GPIO_ErrorStatus_t Gpio_setPortValue (void * GPIO_pvPort, u16 Copy_u16Value);
+
 /* ----------------------------------------Configuration Section -------------------------------------------------- */
+
 #define 	GPIO_INPUT_FLOATING					(GPIO_MODER_INPUT  | GPIO_PUPDR_NORMA)
 #define 	GPIO_INPUT_PU					    (GPIO_MODER_INPUT  | GPIO_PUPDR_PU)
 #define 	GPIO_INPUT_PD					    (GPIO_MODER_INPUT  | GPIO_PUPDR_PD)

@@ -24,7 +24,7 @@ typedef struct
 
 }GPIOx_Register_t;
 
-
+#define 	GPIO_16_VAR_VAL						((u16)0xFFFF)
 
 #define 	GPIO_PIN_CLR_MSK			        ((u32)0x00000003)
 #define 	GPIO_CLR_OTYPER_MSK		            ((u32)0x00000001)
@@ -156,5 +156,21 @@ GPIO_ErrorStatus_t Gpio_SetPinAlternateFunc(void * GPIO_pvPort, u16 Copy_u16Pin,
 	return Loc_enuReturnErrorStatusValue;
 }
 
+GPIO_ErrorStatus_t Gpio_setPortValue (void * GPIO_pvPort, u16 Copy_u16Value)
+{
+	GPIO_ErrorStatus_t Loc_enuReturnErrorStatusValue = GPIO_Ok;
+
+	GPIOx_Register_t*  Loc_AddPort = GPIO_pvPort;
+
+	if (!Loc_AddPort)
+	{
+		Loc_enuReturnErrorStatusValue = GPIO_errorNullPtr;
+	}
+	else
+	{
+		Loc_AddPort->GPIOx_ODR |= Copy_u16Value;
+	}
+	return Loc_enuReturnErrorStatusValue;
+}
 
 
